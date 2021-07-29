@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Profile from "./components/Profile";
+import UserList from "./components/UserList";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+/* Usar useContext para manejar el 
+estado de una manera mejor y tener el
+estado en un mismo lugar  */
+
+/* CONTEXT */
+/* importamos userState para que nuestros componentes puedan acceder al estado  */
+import UserState from "./context/User/UserState";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserState>
+      <div className="container p-4">
+        <div className="row">
+          <div className="col-md-7">
+            <UserList />
+          </div>
+          <div className="col-md-5">
+            <Profile />
+          </div>
+        </div>
+      </div>
+    </UserState>
   );
 }
 
